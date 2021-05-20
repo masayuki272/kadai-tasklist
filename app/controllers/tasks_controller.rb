@@ -15,12 +15,13 @@ class TasksController < ApplicationController
       @task = Task.new(task_params)
       
       if @task.save
-        flash[:success] = 'Taskが正常に入力されました'
+        flash[:success] = 'Taskが正常に登録されました'
         redirect_to @task
       else
-        flash.now[:danger] = 'Taskが入力されませんでした'
+        flash.now[:danger] = 'Taskが登録されませんでした'
         render :new
       end
+
   end
 
   def edit
@@ -37,6 +38,7 @@ class TasksController < ApplicationController
         flash.now[:danger] = 'Task は更新されませんでした'
         render :edit
       end
+
   end
 
   def destroy
@@ -45,6 +47,7 @@ class TasksController < ApplicationController
 
       flash[:success] = 'Task は正常に削除されました'
       redirect_to tasks_url
+
   end
 
   private
