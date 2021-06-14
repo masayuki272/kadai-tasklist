@@ -2,7 +2,9 @@
 
 <ul>
   <% @tasks.each do |task| %>
-    <li><%= link_to task.id, task %> : <%= task.status %> &gt; <%= task.content %></li>
+    <% if task.user_id == @current_user.id %>
+      <li><%= link_to task.id, task %> : <%= task.status %> &gt; <%= task.content %></li>
+    <% end %>
   <% end %>
 </ul>
 

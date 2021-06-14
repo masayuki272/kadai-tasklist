@@ -1,0 +1,24 @@
+<%# コメントアウト%>
+<% if logged_in? %> 
+  <div class="row">
+    <aside class="col-sm-4">
+      <%= form_with(model: @tasklist, local: true) do |f| %>
+        <div class="form-group">
+          <%= f.text_area :content, class: 'form-control', rows: 5 %>
+        </div>
+        <%= f.submit 'Task', class: 'btn btn-primary btn-block' %>
+      <% end %>
+    </aside>
+    <div class="col-sm-8">
+      <p>テスト1</p>
+      <%= render 'tasks/tasks', tasklists: @tasklists %>
+    </div>
+  </div>
+<% else %>
+  <div class="center jumbotron">
+    <div class="text-center">
+      <h1>Welcome to the Tasklist1</h1>
+      <%= link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-primary' %>
+    </div>
+  </div>
+<% end %>
