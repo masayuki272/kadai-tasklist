@@ -9,12 +9,18 @@
 # And be sure to use new-style password hashing:
 #   https://dev.mysql.com/doc/refman/5.7/en/password-hashing.html
 #
+#default: &default
+#  adapter: postgresql
+#  encoding: unicode
+#  pool: 5
+#  username: kadai-tasklist
+#  password: <%= ENV['KADAI-TASKLIST_DATABASE_PASSWORD'] %>
 default: &default
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
-  username: kadai-tasklist
-  password: <%= ENV['KADAI-TASKLIST_DATABASE_PASSWORD']
+  adapter: mysql2
+  encoding: utf8
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: dbuser
+  password: dbpass
   socket: /var/run/mysqld/mysqld.sock
 
 development:
