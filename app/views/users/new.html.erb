@@ -28,6 +28,9 @@
       </div>
 
       <%= f.submit 'Sign up', class: 'btn btn-primary btn-block' %>
+      <br>
+      <%= link_to 'log in 画面に戻る', login_path %>
+      
 <%# コメントアウト　%>
       <%= form_with(model: @user, local: true) do |f| %> 
         <%= render 'layouts/error_messages', model: f.object %>       
