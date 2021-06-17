@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
-  before_action :require_user_logged_in, only: [:index]
-  before_action :correct_user, only: [:destroy]
+  before_action :require_user_logged_in, only: [:index, :show, :edit, :update, :destroy, :create]
+  before_action :correct_user, only: [:destroy, :edit]
 
   def index
     @tasks = Task.all
@@ -8,6 +8,10 @@ class TasksController < ApplicationController
 
   def show
     @task = Task.find(params[:id])
+      unless @task.user_id == current_user.id
+        redirect_to root_url
+      end
+
   end
 
   def new
@@ -27,6 +31,9 @@ class TasksController < ApplicationController
 
   def edit
       @task = Task.find(params[:id])
+      unless @task.user_id == current_user.id
+        redirect_to root_url
+      end
   end
 
   def update
