@@ -7,18 +7,16 @@
 
     <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
 
-      <div class="form-group">
-        <%= f.label :email, 'Email' %>
-        <%= f.email_field :email, class: 'form-control' %>
-      </div>
+      <%= f.label :email, 'Email' %>
+      <%= f.email_field :email, class: 'form-control' %>
+      <br><br><br>
+      <%= f.label :password, 'Password' %>
+      <%= f.password_field :password, class: 'form-control' %>
+      <br><br><br>
 
-      <div class="form-group">
-        <%= f.label :password, 'Password' %>
-        <%= f.password_field :password, class: 'form-control' %>
-      </div>
-
-      <%= f.submit 'Log in', class: 'btn btn-primary btn-block' %>
+      <%= f.submit 'Log in' %>
     <% end %>
+      <br><br><br>
 
     <p>New user? <%= link_to 'Sign up now!', signup_path %></p>
   </div>
