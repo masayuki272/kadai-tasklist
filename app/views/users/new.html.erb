@@ -1,7 +1,8 @@
-      <%= link_to 'log in 画面に戻る', login_path %>
-      <br>
+<%= form_with(model: @user, local: true) do |f| %> 
+    <%= render 'layouts/error_messages', model: f.object %>       
+<% end %>
 
-  <h1>Sign up</h1>
+<h1>Sign up</h1>
 
 
     <%= form_with(model: @user, local: true) do |f| %>
@@ -22,7 +23,8 @@
         <%= f.submit 'Sign up', class: 'btn btn-primary btn-block' %>
         <br><br><br>
 
-      <%= form_with(model: @user, local: true) do |f| %> 
-        <%= render 'layouts/error_messages', model: f.object %>       
-      <% end %>
+      
+        <%= link_to 'log in 画面に戻る', login_path %>
+        <br>
+      
     <% end %>
